@@ -1,7 +1,7 @@
 # Here I import the Shape class from shape.py to create the Rectangle class that inherits from it.
 from shape import Shape
 import matplotlib.pyplot as plt
-from matplotlib.patches import Rectangle
+from matplotlib.patches import Rectangle as RectanglePatch
 
 # Here I create the Rectangle class that inherits from the Shape class.
 class Rectangle(Shape):
@@ -63,7 +63,7 @@ class Rectangle(Shape):
 
     def plot(self):
         fig, ax = plt.subplots()
-        rect = Rectangle((0.2, 0.2), width=0.5, height=0.3, edgecolor='blue', facecolor='lightblue')
+        rect = RectanglePatch((0.2, 0.2), width=0.5, height=0.3, edgecolor='blue', facecolor='lightblue')
         ax.add_patch(rect)
         ax.set_xlim(0, 1)
         ax.set_ylim(0, 1)

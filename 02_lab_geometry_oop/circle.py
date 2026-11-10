@@ -2,7 +2,7 @@
 from shape import Shape
 import math
 import matplotlib.pyplot as plt
-from matplotlib.patches import Circle
+from matplotlib.patches import Circle as CirclePatch
 
 # Here i create the Circle class that inherits from the Shape class.
 class Circle(Shape):
@@ -67,7 +67,7 @@ class Circle(Shape):
 
     def plot(self):
         fig, ax = plt.subplots()
-        circle = Circle((0.5, 0.5), radius=0.2, edgecolor='red', facecolor='lightcoral')
+        circle = CirclePatch((0.5, 0.5), radius=0.2, edgecolor='red', facecolor='lightcoral')
         ax.add_patch(circle)
         ax.set_xlim(0, 1)
         ax.set_ylim(0, 1)
