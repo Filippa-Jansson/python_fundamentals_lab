@@ -1,6 +1,6 @@
 class Shape:
     """A base class representing a geometric shape."""
-    def __init__(self, x=0, y=0) -> None:
+    def __init__(self, x: float = 0, y: float = 0) -> None:
         """Create a shape with center (x, y)."""
         if not (isinstance(x, (int, float)) and isinstance(y, (int, float))):
             raise TypeError("x and y must be numeric values (int or float).")
@@ -24,8 +24,8 @@ class Shape:
     
     @property
     def area(self) -> float:
-            """Return the area of the shape. Implemented by each subclass."""
-            raise NotImplementedError("Subclasses must implement area")
+        """Return the area of the shape. Implemented by each subclass."""
+        raise NotImplementedError("Subclasses must implement area")
 
     def _check_comparable(self, other: object) -> None:
         """Raise TypeError if other is not a Shape."""
