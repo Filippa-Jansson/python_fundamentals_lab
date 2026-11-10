@@ -30,20 +30,12 @@ class Rectangle(Shape):
         """Return True if the rectangle is a square (width == height), False otherwise."""
         return self.width == self.height
     
-    def __eq__(self, other):
+    def __eq__(self, other: object) -> bool:
+        """Return True if other is a Rectangle with the same width and height."""
         if isinstance(other, Rectangle):
             return self.width == other.width and self.height == other.height
         return False
     
-    def __lt__(self, other):
-        if isinstance(other, Rectangle):
-            return self.area < other.area
-        raise TypeError("Can only compare Rectangle with Rectangle.")
-    
-    def __le__(self, other): return self == other or self < other
-    def __gt__(self, other): return not self <= other
-    def __ge__(self, other): return not self < other
-
     def __repr__(self) -> str:
         """Return a developer-friendly representation of the rectangle."""
         return f"Rectangle(x={self.x}, y={self.y}, width={self.width}, height={self.height})"
@@ -51,8 +43,8 @@ class Rectangle(Shape):
     def __str__(self) -> str:
         """Return a user-friendly description of the rectangle."""
         return f"Rectangle centered at ({self.x}, {self.y}) with width={self.width} and height={self.height}"
-  
 
+  
     def plot(self) -> None:
         """Plot the rectangle at its position using matplotlib."""
         fig, ax = plt.subplots()

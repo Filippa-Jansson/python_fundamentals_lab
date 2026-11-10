@@ -28,34 +28,10 @@ class Circle(Shape):
         """Return True if the circle is a unit circle (radius = 1), False otherwise."""
         return self.radius == 1
     
-    # Here i define the equality method to compare two Circle objects based on their radius.
-    def __eq__(self, other):
+    def __eq__(self, other: object) -> bool:
+        """Return True if other is a Circle with the same radius."""
         return isinstance(other, Circle) and self.radius == other.radius
-    
-    # Here i define the less-than method to compare two Circle objects based on their radius.
-    def __lt__(self, other):
-        if not isinstance(other, Circle):
-            raise TypeError("Can only compare Circle with Circle")
-        return self.radius < other.radius
-    
-    # Here i define the less-than-or-equal-to, greater-than, and greater-than-or-equal-to methods.
-    def __le__(self, other):
-        if not isinstance(other, Circle):
-            raise TypeError("Can only compare Circle with Circle")
-        return self.radius <= other.radius
-    
-    # Here i define the less-than-or-equal-to, greater-than, and greater-than-or-equal-to methods.
-    def __gt__(self, other):
-        if not isinstance(other, Circle):
-            raise TypeError("Can only compare Circle with Circle")
-        return self.radius > other.radius
-    
-    # Here i define the less-than-or-equal-to, greater-than, and greater-than-or-equal-to methods.
-    def __ge__(self, other):
-        if not isinstance(other, Circle):
-            raise TypeError("Can only compare Circle with Circle")
-        return self.radius >= other.radius
-    
+        
     def __repr__(self) -> str:
         """Return a developer-friendly representation of the circle."""
         return f"Circle(x={self.x}, y={self.y}, radius={self.radius})"
