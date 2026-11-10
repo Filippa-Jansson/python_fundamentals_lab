@@ -57,21 +57,31 @@ class Circle(Shape):
         return self.radius >= other.radius
     
     def __repr__(self) -> str:
+        """Return a developer-friendly representation of the circle."""
         return f"Circle(x={self.x}, y={self.y}, radius={self.radius})"
     
-    # Here i define the __str__ method to provide a user-friendly string representation of the Circle object.
     def __str__(self) -> str:
+        """Return a user-friendly description of the circle."""
         return f"Circle with center ({self.x}, {self.y}) and radius {self.radius}"
 
 
     def plot(self) -> None:
-        """Plot the circle using matplotlib."""
+        """Plot the circle at its position using matplotlib."""
         fig, ax = plt.subplots()
-        circle = CirclePatch((0.5, 0.5), radius=0.2, edgecolor='red', facecolor='lightcoral')
+        circle = CirclePatch(
+            (self.x, self.y),
+            radius=self.radius,
+            edgecolor='red',
+            facecolor='lightcoral',
+        )
         ax.add_patch(circle)
-        ax.set_xlim(0, 1)
-        ax.set_ylim(0, 1)
+
+        # Fit the axes around the circle with some margin
+        margin = 1
+        ax.set_xlim(self.x - self.radius - margin, self.x + self.radius + margin)
+        ax.set_ylim(self.y - self.radius - margin, self.y + self.radius + margin)
+
         ax.set_aspect('equal')
         plt.grid(True)
-        plt.title('Circle')
+        plt.title(str(self))
         plt.show()
