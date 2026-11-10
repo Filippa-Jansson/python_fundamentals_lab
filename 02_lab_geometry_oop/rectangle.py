@@ -54,13 +54,28 @@ class Rectangle(Shape):
   
 
     def plot(self) -> None:
-        """Plot the rectangle using matplotlib."""
+        """Plot the rectangle at its position using matplotlib."""
         fig, ax = plt.subplots()
-        rect = RectanglePatch((0.2, 0.2), width=0.5, height=0.3, edgecolor='blue', facecolor='lightblue')
+
+        # Matplotlib draws rectangles from the bottom-left corner, not the center
+        corner_x = self.x - self.width / 2
+        corner_y = self.y - self.height / 2
+
+        rect = RectanglePatch(
+            (corner_x, corner_y),
+            width=self.width,
+            height=self.height,
+            edgecolor='blue',
+            facecolor='lightblue',
+        )
         ax.add_patch(rect)
-        ax.set_xlim(0, 1)
-        ax.set_ylim(0, 1)
+
+        # Fit the axes around the rectangle with some margin
+        margin = 1
+        ax.set_xlim(self.x - self.width / 2 - margin, self.x + self.width / 2 + margin)
+        ax.set_ylim(self.y - self.height / 2 - margin, self.y + self.height / 2 + margin)
+
         ax.set_aspect('equal')
         plt.grid(True)
-        plt.title('Rectangle')
+        plt.title(str(self))
         plt.show()
