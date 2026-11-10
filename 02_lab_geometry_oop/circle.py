@@ -6,7 +6,8 @@ from matplotlib.patches import Circle as CirclePatch
 
 # Here i create the Circle class that inherits from the Shape class.
 class Circle(Shape):
-    def __init__(self, x=0, y=0, radius=1):
+    def __init__(self, x: float = 0, y: float = 0, radius: float = 1) -> None:
+        """Create a circle with center (x, y) and the given radius."""
         super().__init__(x, y)
         if not isinstance(radius, (int, float)):
             raise TypeError("radius must be numeric")
@@ -16,16 +17,19 @@ class Circle(Shape):
 
     # Here i define the area property to calculate the area of the circle.
     @property
-    def area(self):
+    def area(self) -> float:
+        """Return the area of the circle."""
         return math.pi * self.radius ** 2
     
     # Here i define the perimeter property to calculate the perimeter of the circle.
     @property
-    def perimeter(self):
+    def perimeter(self) -> float:
+        """Return the perimeter (circumference) of the circle."""
         return 2 * math.pi * self.radius
     
     # Here i define a method to check if the circle is a unit circle.
-    def is_unit_circle(self):
+    def is_unit_circle(self) -> bool:
+        """Return True if the circle is a unit circle (radius = 1), False otherwise."""
         return self.radius == 1
     
     # Here i define the equality method to compare two Circle objects based on their radius.
@@ -65,7 +69,8 @@ class Circle(Shape):
         return f"Circle with center ({self.x}, {self.y}) and radius {self.radius}"
 
 
-    def plot(self):
+    def plot(self) -> None:
+        """Plot the circle using matplotlib."""
         fig, ax = plt.subplots()
         circle = CirclePatch((0.5, 0.5), radius=0.2, edgecolor='red', facecolor='lightcoral')
         ax.add_patch(circle)
