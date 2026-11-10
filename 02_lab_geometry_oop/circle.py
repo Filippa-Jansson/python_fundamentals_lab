@@ -1,11 +1,10 @@
-# here i import the Shape class and the math module to use mathematical functions.
 from shape import Shape
 import math
 import matplotlib.pyplot as plt
 from matplotlib.patches import Circle as CirclePatch
 
-# Here i create the Circle class that inherits from the Shape class.
 class Circle(Shape):
+    """A class representing a circle."""
     def __init__(self, x: float = 0, y: float = 0, radius: float = 1) -> None:
         """Create a circle with center (x, y) and the given radius."""
         super().__init__(x, y)
@@ -15,19 +14,16 @@ class Circle(Shape):
             raise ValueError("radius must be positive")
         self.radius = radius
 
-    # Here i define the area property to calculate the area of the circle.
     @property
     def area(self) -> float:
         """Return the area of the circle."""
         return math.pi * self.radius ** 2
     
-    # Here i define the perimeter property to calculate the perimeter of the circle.
     @property
     def perimeter(self) -> float:
         """Return the perimeter (circumference) of the circle."""
         return 2 * math.pi * self.radius
     
-    # Here i define a method to check if the circle is a unit circle.
     def is_unit_circle(self) -> bool:
         """Return True if the circle is a unit circle (radius = 1), False otherwise."""
         return self.radius == 1
@@ -60,12 +56,11 @@ class Circle(Shape):
             raise TypeError("Can only compare Circle with Circle")
         return self.radius >= other.radius
     
-    # Here i define the __repr__ method to provide a string representation of the Circle object for debugging.
-    def __repr__(self):
+    def __repr__(self) -> str:
         return f"Circle(x={self.x}, y={self.y}, radius={self.radius})"
     
     # Here i define the __str__ method to provide a user-friendly string representation of the Circle object.
-    def __str__(self):
+    def __str__(self) -> str:
         return f"Circle with center ({self.x}, {self.y}) and radius {self.radius}"
 
 
